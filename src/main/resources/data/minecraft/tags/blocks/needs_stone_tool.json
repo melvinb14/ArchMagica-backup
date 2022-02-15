@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "archmagica:jade_block",
+    "archmagica:jade_ore",
+    "archmagica:steel_block"
+  ]
+}
