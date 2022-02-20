@@ -11,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -79,6 +80,10 @@ public class BlockInit {
             () -> new FlowerBlock(MobEffects.HEAL, 2,
                     BlockBehaviour.Properties.copy(Blocks.DANDELION)));
 
+    public static final RegistryObject<Block> POTTED_AAPHUSH_FLOWER = BLOCKS.register("potted_aaphush_flower",
+            () -> new FlowerPotBlock(null , BlockInit.AAPHUSH_FLOWER,
+                    BlockBehaviour.Properties.copy(Blocks.POTTED_DANDELION)));
+
 
 
     // Wood
@@ -114,12 +119,12 @@ public class BlockInit {
             });
     // Stairs, ETC
 
-   /** public static final RegistryObject<Block> CORRUPTED_SIGN = BLOCKS.register("corrupted_sign",
-            () -> new StandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD), WoodType.CORRUPTED));
+   public static final RegistryObject<Block> CORRUPTED_SIGN = BLOCKS.register("corrupted_sign",
+            () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WoodTypeInit.CORRUPTED));
 
     public static final RegistryObject<Block> CORRUPTED_WALL_SIGN = BLOCKS.register("corrupted_wall_sign",
-            () -> new WallSignBlock(BlockBehaviour.Properties.of(Material.WOOD), WoodTypes.CORRUPTED));
-*/
+            () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WoodTypeInit.CORRUPTED));
+
     public static final RegistryObject<Block> CORRUPTED_STAIRS = registerBlock("corrupted_stairs",
             () -> new StairBlock(() -> CORRUPTED_PLANKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(Blocks.DARK_OAK_STAIRS)));
@@ -154,6 +159,65 @@ public class BlockInit {
 
 
 
+
+    // Blockbench
+
+    public static final RegistryObject<Block> WITCH_OVEN = registerBlock("witch_oven",
+            () -> new WitchOvenBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(5f, 6f).noOcclusion()
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> BLACKSMITH_ANVIL = registerBlock("blacksmith_anvil",
+            () -> new BlackSmithAnvilBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(5f, 6f).noOcclusion()
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> MAGIC_CRYSTAL = registerBlock("magic_crystal",
+            () -> new MagicCrystalBlock(BlockBehaviour.Properties.of(Material.GLASS)
+                    .noOcclusion()
+                    .strength(1.5F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .lightLevel((p_50870_) -> 15)));
+
+    public static final RegistryObject<Block> MAGIC_CRYSTAL2 = registerBlock("magic_crystal2",
+            () -> new MagicCrystal2Block(BlockBehaviour.Properties.of(Material.GLASS)
+                    .noOcclusion()
+                    .strength(1.5F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .lightLevel((p_50870_) -> 15)));
+
+    public static final RegistryObject<Block> MAGIC_CRYSTAL3 = registerBlock("magic_crystal3",
+            () -> new MagicCrystal3Block(BlockBehaviour.Properties.of(Material.GLASS)
+                    .noOcclusion()
+                    .strength(1.5F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .lightLevel((p_50870_) -> 15)));
+
+    public static final RegistryObject<Block> FALLEN_ADVENTURER1 = registerBlock("fallen_adventurer1",
+            () -> new FallingAdventurer1Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .noOcclusion()
+                    .strength(3.0F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.BONE_BLOCK)));
+
+    public static final RegistryObject<Block> FALLEN_ADVENTURER2 = registerBlock("fallen_adventurer2",
+            () -> new FallingAdventurer2Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .noOcclusion()
+                    .strength(2.0F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.BONE_BLOCK)));
+
+    public static final RegistryObject<Block> WATERPLANT = registerBlock("waterplant",
+            () -> new WaterplantBlock(BlockBehaviour.Properties.of(Material.PLANT)
+                    .noOcclusion()
+                    .instabreak()
+                    .sound(SoundType.BIG_DRIPLEAF)
+                    .lightLevel((p_50870_) -> 8)));
 
 
 

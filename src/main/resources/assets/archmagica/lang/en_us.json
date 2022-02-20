@@ -182,13 +182,16 @@
 	"block.archmagica.corrupted_sign": "Corrupted Sign",
 
 	"block.archmagica.aaphush_flower": "Aaphush",
+	"block.archmagica.potted_aaphush_flower": "Potted Aaphush",
 	
 	"block.archmagica.blacksmith_anvil": "Blacksmith's Anvil",
-	"block.archmagica.fallen_adventurer": "Fallen Adventurer",
-	"block.archmagica.overgrown_fallen_adventurer": "Overgrown Fallen Adventurer",
-	"block.archmagica.magic_crystal": "Blue Magic Crystal",
-	"block.archmagica.magic_crystal2": "Dark Blue Magic Crystal",
+	"block.archmagica.fallen_adventurer1": "Overgrown Fallen Adventurer",
+	"block.archmagica.fallen_adventurer2": "Fallen Adventurer",
+	"block.archmagica.magic_crystal": "Dark Blue Magic Crystal",
+	"block.archmagica.magic_crystal2": "Light Blue Magic Crystal",
+	"block.archmagica.magic_crystal3": "Blue Magic Crystal",
 	"block.archmagica.witch_oven": "Witch Oven",
+	"block.archmagica.waterplant": "Waterplant",
 	"fluid.archmagica.ominous": "ominous",
 	"container.archmagica.crafting": "",
 	"container.archmagica.witch_oven": ""

@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "archmagica:block/magic_crystal",
-		"particle": "archmagica:block/magic_crystal"
+		"0": "archmagica:block/magic_crystal2",
+		"particle": "archmagica:block/magic_crystal2"
 	},
 	"elements": [
 		{

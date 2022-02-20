@@ -20,9 +20,13 @@
     "archmagica:mythril_block",
     "archmagica:jade_ore",
     "archmagica:jade_block",
-    "archmagica:steel_block"
-
-
-
+    "archmagica:steel_block",
+    "archmagica:witch_oven",
+    "archmagica:blacksmith_anvil",
+    "archmagica:fallen_adventurer1",
+    "archmagica:fallen_adventurer2",
+    "archmagica:magic_crystal",
+    "archmagica:magic_crystal2",
+    "archmagica:magic_crystal3"
   ]
 }

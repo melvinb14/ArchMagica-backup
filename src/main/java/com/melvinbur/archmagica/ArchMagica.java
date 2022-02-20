@@ -1,13 +1,17 @@
 package com.melvinbur.archmagica;
 
 
+import com.melvinbur.archmagica.client.sound.SoundsInit;
 import com.melvinbur.archmagica.core.block.BlockInit;
 import com.melvinbur.archmagica.core.block.WoodTypeInit;
+
 import com.melvinbur.archmagica.core.item.ItemInit;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -37,6 +41,9 @@ public class ArchMagica {
         BlockInit.register(eventBus);
         ItemInit.register(eventBus);
 
+        SoundsInit.register(eventBus);
+
+
 
 
         eventBus.addListener(this::setup);
@@ -51,9 +58,19 @@ public class ArchMagica {
 
 
         ItemBlockRenderTypes.setRenderLayer(BlockInit.AAPHUSH_FLOWER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.POTTED_AAPHUSH_FLOWER.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(BlockInit.CORRUPTED_LEAVES.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockInit.CORRUPTED_SAPLING.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.WITCH_OVEN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.BLACKSMITH_ANVIL.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.MAGIC_CRYSTAL.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.MAGIC_CRYSTAL2.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.MAGIC_CRYSTAL3.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.FALLEN_ADVENTURER1.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.FALLEN_ADVENTURER2.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockInit.WATERPLANT.get(), RenderType.cutout());
 
 
 
@@ -63,7 +80,10 @@ public class ArchMagica {
     private void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
 
-        Sheets.addWoodType(WoodTypeInit.CORRUPTED);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.AAPHUSH_FLOWER.getId(), BlockInit.POTTED_AAPHUSH_FLOWER);
+            Sheets.addWoodType(WoodTypeInit.CORRUPTED);
         });
+
+
     }
 }
