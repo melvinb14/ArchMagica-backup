@@ -1,11 +1,14 @@
 package com.melvinbur.archmagica.core.world;
 
 
+import com.melvinbur.archmagica.core.world.gen.features.ores.OrePlacementInit;
+
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.*;
 
+import java.util.List;
 
 
 public class PlacementFeaturesInit {
@@ -13,11 +16,17 @@ public class PlacementFeaturesInit {
 // Trees
     public static final PlacedFeature CORRUPTED_PLACED = PlacementUtils.register("corrupted_placed",
             ConfiguredFeatureInit.CORRUPTED_TREE_CHECKED.placed(InSquarePlacement.spread(),
-                     PlacementUtils.HEIGHTMAP_WORLD_SURFACE, PlacementUtils.countExtra(18, 0.25F, 3), BiomeFilter.biome()));
+                     PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, PlacementUtils.countExtra(1, 0.25F, 2), BiomeFilter.biome()));
 
-// Flowers
+// Vegetation
     public static final PlacedFeature AAPHUSH_FLOWER_PLACED = PlacementUtils.register("aaphush_flower_placed",
     ConfiguredFeatureInit.AAPHUSH_FLOWER.placed(RarityFilter.onAverageOnceEvery(12), PlacementUtils.HEIGHTMAP, InSquarePlacement.spread(), BiomeFilter.biome()));
+
+    public static final PlacedFeature WATERPLANT_PLACED = PlacementUtils.register("waterplant",
+            ConfiguredFeatureInit.WATERPLANT.placed(worldSurfaceSquaredWithCount(4)));
+
+
+
 
 
 
@@ -90,6 +99,15 @@ public class PlacementFeaturesInit {
     public static final PlacedFeature PURGATORY_STONE_PLACED = PlacementUtils.register("purgatory_stone_placed",
             ConfiguredFeatureInit.PURGATORY_STONE.placed(OrePlacementInit.commonOrePlacement(2, // VeinsPerChunk
                     HeightRangePlacement.uniform(VerticalAnchor.absolute(5), VerticalAnchor.absolute(31)))));
+
+
+
+    public static List<PlacementModifier> worldSurfaceSquaredWithCount(int p_195475_) {
+        return List.of(CountPlacement.of(p_195475_), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE, BiomeFilter.biome());
+    }
+
+
+
 
 
 

@@ -2,7 +2,7 @@ package com.melvinbur.archmagica.core.block;
 import com.melvinbur.archmagica.ArchMagica;
 import com.melvinbur.archmagica.core.item.CreativeModeTabInit;
 import com.melvinbur.archmagica.core.item.ItemInit;
-import com.melvinbur.archmagica.core.world.features.tree.CorruptedTreeGrower;
+import com.melvinbur.archmagica.core.world.gen.features.tree.CorruptedTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.effect.MobEffects;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.Material;
 
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -201,6 +200,7 @@ public class BlockInit {
     public static final RegistryObject<Block> FALLEN_ADVENTURER1 = registerBlock("fallen_adventurer1",
             () -> new FallingAdventurer1Block(BlockBehaviour.Properties.of(Material.STONE)
                     .noOcclusion()
+                    .noCollission()
                     .strength(3.0F)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.BONE_BLOCK)));
@@ -208,6 +208,7 @@ public class BlockInit {
     public static final RegistryObject<Block> FALLEN_ADVENTURER2 = registerBlock("fallen_adventurer2",
             () -> new FallingAdventurer2Block(BlockBehaviour.Properties.of(Material.STONE)
                     .noOcclusion()
+                    .noCollission()
                     .strength(2.0F)
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.BONE_BLOCK)));
@@ -215,6 +216,7 @@ public class BlockInit {
     public static final RegistryObject<Block> WATERPLANT = registerBlock("waterplant",
             () -> new WaterplantBlock(BlockBehaviour.Properties.of(Material.PLANT)
                     .noOcclusion()
+                    .noCollission()
                     .instabreak()
                     .sound(SoundType.BIG_DRIPLEAF)
                     .lightLevel((p_50870_) -> 8)));

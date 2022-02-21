@@ -1,4 +1,4 @@
-package com.melvinbur.archmagica.core.world;
+package com.melvinbur.archmagica.core.world.gen.features.ores;
 
 
 

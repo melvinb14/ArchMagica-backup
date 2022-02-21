@@ -1,10 +1,7 @@
  {
 	"variants": {
-		"facing=north": { "model": "archmagica:block/waterplant", "y": 270 },
-		"facing=south": { "model": "archmagica:block/waterplant", "y": 90},
-		"facing=east": { "model": "archmagica:block/waterplant"},
-		"facing=west": { "model": "archmagica:block/waterplant", "y": 180}
-
+		"": {
+			"model": "archmagica:block/waterplant"
+		}
 	}
-}
-
+ }

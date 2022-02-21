@@ -1,4 +1,4 @@
-package com.melvinbur.archmagica.core.world.gen.ores;
+package com.melvinbur.archmagica.core.world.gen.features.ores;
 
 
 import com.melvinbur.archmagica.core.world.PlacementFeaturesInit;
@@ -7,7 +7,6 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
 import java.util.List;
 import java.util.function.Supplier;
 
