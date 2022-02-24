@@ -5,11 +5,20 @@ package com.melvinbur.archmagica.core.world;
 
 
 import com.melvinbur.archmagica.core.block.BlockInit;
+import com.melvinbur.archmagica.core.block.GroundCoverBlock;
+
+import com.melvinbur.archmagica.core.world.gen.features.stateproviders.DirectionalStateProvider;
+
+import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
@@ -19,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 
+import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -63,8 +73,27 @@ public class ConfiguredFeatureInit {
 
 // Environment
 
-    public static final ConfiguredFeature<RandomPatchConfiguration, ?> WATERPLANT = FeatureUtils.register("waterplant", Feature.RANDOM_PATCH.configured(new RandomPatchConfiguration(5, 3, 3, () ->
-            Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(BlockInit.WATERPLANT.get()))).onlyWhenEmpty())));
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> WATERPLANT = FeatureUtils.register("waterplant",
+            Feature.RANDOM_PATCH.configured(waterPatchConfiguration(Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(BlockInit.WATERPLANT.get()))))));
+
+
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> FALLEN = FeatureUtils.register("fallen",
+            createGroundcoverPatchFeature(1, 65, 20, BlockInit.FALLEN_ADVENTURER1.get()));
+
+    public static final ConfiguredFeature<RandomPatchConfiguration, ?> FALLEN2 = FeatureUtils.register("fallen2",
+            createGroundcoverPatchFeature(1, 65, 20, BlockInit.FALLEN_ADVENTURER2.get()));
+
+    public static final ConfiguredFeature<SimpleBlockConfiguration, ?> MAGIC_CRYSTAL = register("magic_crystal",
+            Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(BlockInit.MAGIC_CRYSTAL.get()))));
+
+
+    public static final ConfiguredFeature<SimpleBlockConfiguration, ?> MAGIC_CRYSTAL2 = register("magic_crystal2",
+            Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(BlockInit.MAGIC_CRYSTAL2.get()))));
+
+    public static final ConfiguredFeature<SimpleBlockConfiguration, ?> MAGIC_CRYSTAL3 = register("magic_crystal3",
+            Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(BlockInit.MAGIC_CRYSTAL3.get()))));
+
+
 
 
 
@@ -124,6 +153,23 @@ public class ConfiguredFeatureInit {
     // End
     public static final ConfiguredFeature<?, ?> EDAPHINE_ORE = register("edaphine_ore",
             Feature.ORE.configured(new OreConfiguration(ENDSTONE , BlockInit.EDAPHINE_ORE.get().defaultBlockState(), 5)));
+
+
+    private static ConfiguredFeature<RandomPatchConfiguration, ?> createGroundcoverPatchFeature(int tries, int xzSpread, int ySpread, Block block) {
+        return Feature.RANDOM_PATCH.configured(new RandomPatchConfiguration(tries, xzSpread, ySpread, () ->
+                FeaturesInit.SIMPLE_BLOCK_MATCH_WATER.configured(new SimpleBlockConfiguration(new RandomizedIntStateProvider(new DirectionalStateProvider(block),
+                        GroundCoverBlock.MODEL, UniformInt.of(0, 4)))).filtered(BlockPredicate.allOf(BlockPredicate.replaceable(),
+                        BlockPredicate.not(BlockPredicate.matchesBlock(Blocks.ICE, new BlockPos(0, -1, 0)))))));
+    }
+
+    private static RandomPatchConfiguration waterPatchConfiguration(ConfiguredFeature<?, ?> feature, int tries) {
+        return FeatureUtils.simpleRandomPatchConfiguration(tries, feature.filtered(BlockPredicate.matchesBlock(Blocks.WATER, BlockPos.ZERO)));
+    }
+
+    private static RandomPatchConfiguration waterPatchConfiguration(ConfiguredFeature<?, ?> feature) {
+        return waterPatchConfiguration(feature, 96);
+    }
+
 
 
 

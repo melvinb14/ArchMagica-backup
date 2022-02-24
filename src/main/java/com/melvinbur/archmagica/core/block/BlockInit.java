@@ -2,7 +2,7 @@ package com.melvinbur.archmagica.core.block;
 import com.melvinbur.archmagica.ArchMagica;
 import com.melvinbur.archmagica.core.item.CreativeModeTabInit;
 import com.melvinbur.archmagica.core.item.ItemInit;
-import com.melvinbur.archmagica.core.world.gen.features.tree.CorruptedTreeGrower;
+import com.melvinbur.archmagica.core.world.gen.features.trees.CorruptedTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.effect.MobEffects;

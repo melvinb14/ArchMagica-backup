@@ -1,4 +1,4 @@
-package com.melvinbur.archmagica.core.world.gen.features.tree;
+package com.melvinbur.archmagica.core.world.gen.features.trees;
 
 
 
